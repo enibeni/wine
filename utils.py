@@ -3,7 +3,7 @@ import pandas
 from collections import defaultdict
 
 
-wines_file = "wine.xlsx"
+wines_file = "wine-EXAMPLE.xlsx"
 
 
 def get_age():
@@ -13,12 +13,12 @@ def get_age():
 
 
 def get_wines() -> dict:
-    final_dict = defaultdict(list)
+    wines = defaultdict(list)
     excel_data_df = pandas.read_excel(
         wines_file,
         na_values='nan',
         keep_default_na=False
     ).to_dict(orient='record')
     for record in excel_data_df:
-        final_dict[record.get("Категория")].append(record)
-    return final_dict
+        wines[record.get("Категория")].append(record)
+    return wines
