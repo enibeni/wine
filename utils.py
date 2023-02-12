@@ -12,10 +12,10 @@ def get_age():
     return current_year - year_founded
 
 
-def get_wines() -> dict:
+def get_wines(file_path) -> dict:
     wines = defaultdict(list)
     excel_data_df = pandas.read_excel(
-        wines_file,
+        file_path,
         na_values='nan',
         keep_default_na=False
     ).to_dict(orient='record')
